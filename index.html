@@ -1,0 +1,158 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Angular Routing">
+  <title>Angular Routing</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="https://federicozacayan.github.io/tutorial/css/prism.css" rel="stylesheet">
+<style>
+p {
+    margin: 0;
+}
+</style>
+<style>textarea {
+  width: 100%;
+  margin: .5rem auto; }
+
+.buttons button {
+  cursor: pointer;
+  background-color: #00b7ff;
+  padding: .5rem;
+  margin: .5rem;
+  border-radius: 1rem;
+  color: white;
+  text-transform: capitalize;
+  display: inline-block;
+  width: auto; }
+
+button {
+  width: 50%; }
+
+.styler {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 1rem; }
+  .styler .background {
+    position: fixed;
+    background-color: #000;
+    opacity: .5;
+    height: 200px;
+    top: 0;
+    margin-left: -1rem;
+    float: left;
+    width: 100%;
+    z-index: -1;
+    height: 100vh; }
+</style></head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"><div class="container"><div><div><h1>Angular Routing</h1><p>Install angular cli.</p><pre class="  language-javascript"><code class="  language-javascript">npm install <span class="token operator">-</span>g @angular<span class="token operator">/</span>cli</code></pre><p>Create a project.</p><pre class="  language-css"><code class="  language-css">ng new angular-routing &amp;&amp; cd angular-routing</code></pre><p>Say yes when it asks you for implementing routing.</p><pre class="  language-css"><code class="  language-css">Would you like to add Angular routing? Yes
+</code></pre><p>Run the application.</p><pre class="  language-javascript"><code class="  language-javascript">ng serve <span class="token operator">--</span>open </code></pre><p>Generate some components.</p><pre class="  language-javascript"><code class="  language-javascript">ng g c header
+ng g c home
+ng g c contact
+ng g c project
+ng g c PageNotFound</code></pre><p>src/app/app.module.ts </p><pre class="  language-javascript"><code class="  language-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> BrowserModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/platform-browser'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> NgModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/core'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> AppRoutingModule <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./app-routing.module'</span><span class="token punctuation">;</span><span class="token comment">// check it out</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> AppComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./app.component'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> HomeComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./home/home.component'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> HeaderComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./header/header.component'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> ContacComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./contac/contac.component'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> ProjectComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./project/project.component'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> PageNotFoundComponent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./page-not-found/page-not-found.component'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> RouterModule<span class="token punctuation">,</span> Routes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/router'</span><span class="token punctuation">;</span><span class="token comment">// check it out</span>
+
+<span class="token keyword">const</span> routes<span class="token punctuation">:</span> Routes <span class="token operator">=</span> <span class="token punctuation">[</span>
+  <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span> redirectTo<span class="token punctuation">:</span> <span class="token string">'home'</span><span class="token punctuation">,</span> pathMatch<span class="token punctuation">:</span> <span class="token string">'full'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'home'</span><span class="token punctuation">,</span>  component<span class="token punctuation">:</span> HomeComponent<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'contact'</span><span class="token punctuation">,</span>  component<span class="token punctuation">:</span> ContacComponent<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'project/:id123'</span><span class="token punctuation">,</span> component<span class="token punctuation">:</span> ProjectComponent <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'**'</span><span class="token punctuation">,</span> component<span class="token punctuation">:</span> PageNotFoundComponent <span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+@<span class="token function">NgModule</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  declarations<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    AppComponent<span class="token punctuation">,</span>
+    HomeComponent<span class="token punctuation">,</span>
+    HeaderComponent<span class="token punctuation">,</span>
+    ContacComponent<span class="token punctuation">,</span>
+    PageNotFoundComponent<span class="token punctuation">,</span>
+    ProjectComponent
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  imports<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    BrowserModule<span class="token punctuation">,</span>
+    AppRoutingModule<span class="token punctuation">,</span><span class="token comment">// check it out</span>
+    RouterModule<span class="token punctuation">.</span><span class="token function">forRoot</span><span class="token punctuation">(</span>routes<span class="token punctuation">)</span><span class="token comment">// check it out</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  providers<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  bootstrap<span class="token punctuation">:</span> <span class="token punctuation">[</span>AppComponent<span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AppModule</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span></code></pre><p>app.component.html</p><pre class="  language-html"><code class="  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>app-header</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>app-header</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>router-outlet</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>router-outlet</span><span class="token punctuation">&gt;</span></span></code></pre><p>header.component.html</p><pre class="  language-javascript"><code class="  language-javascript"><span class="token operator">&lt;</span>a routerLink<span class="token operator">=</span><span class="token string">"home"</span><span class="token operator">&gt;</span>Home<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span> 
+<span class="token operator">|</span> <span class="token operator">&lt;</span>a routerLink<span class="token operator">=</span><span class="token string">"contact"</span><span class="token operator">&gt;</span>Contact<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span> 
+<span class="token operator">|</span> <span class="token operator">&lt;</span>a <span class="token punctuation">[</span>routerLink<span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"['/project', param]"</span><span class="token operator">&gt;</span>Project<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span></code></pre><p>header.component.ts</p><pre class="  language-javascript"><code class="  language-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Component<span class="token punctuation">,</span> OnInit <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/core'</span><span class="token punctuation">;</span>
+@<span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  selector<span class="token punctuation">:</span> <span class="token string">'app-header'</span><span class="token punctuation">,</span>
+  templateUrl<span class="token punctuation">:</span> <span class="token string">'./header.component.html'</span><span class="token punctuation">,</span>
+  styleUrls<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'./header.component.scss'</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">HeaderComponent</span> <span class="token keyword">implements</span> <span class="token class-name">OnInit</span> <span class="token punctuation">{</span>
+  param<span class="token punctuation">:</span>string <span class="token operator">=</span> <span class="token string">'something'</span><span class="token punctuation">;</span><span class="token comment">//chec it out</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+  <span class="token function">ngOnInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre><p>project.component.html</p><pre class="  language-html"><code class="  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>project works!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+{{param}}</code></pre><p>project.component.ts</p><pre class="  language-javascript"><code class="  language-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Component<span class="token punctuation">,</span> OnInit <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/core'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> ActivatedRoute<span class="token punctuation">,</span> Router <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@angular/router'</span><span class="token punctuation">;</span><span class="token comment">//check it out</span>
+@<span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  selector<span class="token punctuation">:</span> <span class="token string">'app-project'</span><span class="token punctuation">,</span>
+  templateUrl<span class="token punctuation">:</span> <span class="token string">'./project.component.html'</span><span class="token punctuation">,</span>
+  styleUrls<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'./project.component.scss'</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">ProjectComponent</span> <span class="token keyword">implements</span> <span class="token class-name">OnInit</span> <span class="token punctuation">{</span>
+  param<span class="token punctuation">:</span>string<span class="token punctuation">;</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter"><span class="token keyword">private</span> route<span class="token punctuation">:</span> ActivatedRoute<span class="token punctuation">,</span> <span class="token keyword">private</span> router<span class="token punctuation">:</span> Router</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>route<span class="token punctuation">.</span>params<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token parameter">params</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+       <span class="token keyword">this</span><span class="token punctuation">.</span>param <span class="token operator">=</span> params<span class="token punctuation">.</span>id123<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">ngOnInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+  <span class="token function">someMethod</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>router<span class="token punctuation">.</span><span class="token function">navigate</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'project'</span><span class="token punctuation">,</span> <span class="token string">'id-param'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>router<span class="token punctuation">.</span><span class="token function">navigate</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'project'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> id<span class="token punctuation">:</span> <span class="token string">'param'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><p>That is all.</p></div><div class="styler" style="display: none;"><div class="background"></div><textarea style="margin-top: 7.99716px; margin-bottom: 7.99716px; height: 59px;">import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';//check it out
+@Component({
+  selector: 'app-project',
+  templateUrl: './project.component.html',
+  styleUrls: ['./project.component.scss']
+})
+export class ProjectComponent implements OnInit {
+  param:string;
+  constructor(private route: ActivatedRoute, private router: Router) {
+    this.route.params.subscribe(params =&gt; {
+       this.param = params.id123;
+    })
+  }
+  ngOnInit() { }
+  someMethod() {
+    this.router.navigate(['project', 'id-param']);
+    this.router.navigate(['project', { id: 'param' }]);
+  }
+}</textarea><br><button>Duplicate</button><button>Delete</button><br><div class="buttons"><button>h1 </button><button>h2 </button><button>p </button><button>html </button><button>css </button><button>javascript </button></div><label for="up" class="btn btn-primary btn-block btn-outlined">Upload Json</label><input id="up" type="file" accept="text/plain" style="display: none;"><label for="down" class="btn btn-primary btn-block btn-outlined">Download Json</label><button id="down" style="display: none;">Export</button><label for="html" class="btn btn-primary btn-block btn-outlined">Download HTML</label><button id="html" style="display: none;">Export</button></div></div></div></div>
+<script src="/static/js/bundle.js"></script><script src="/static/js/1.chunk.js"></script><script src="/static/js/main.chunk.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  <script src="https://federicozacayan.github.io/tutorial/js/prism.js"></script>
+
+
+
+</body></html>
